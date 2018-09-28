@@ -2,18 +2,16 @@
 #include "ui_mainwindow.h"
 #include "qpainter.h"
 #include "8reinas.h"
+#include <QPropertyAnimation>
 
 using namespace std;
 
-
-MainWindow::MainWindow(QWidget *parent) :
-
+MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 }
-
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -50,7 +48,8 @@ void MainWindow::on_pushButton_clicked()
                                             cout<<"Solucion "<<soluciones<<endl;
                                             cout<<"Las coordenadas fueron: " <<endl;
                                             cout<<"1 - "<<i1+1<<endl;
-                                           // paintEvent(evento, 90, 10);
+                                            if (this->x<580)
+                                                this->mover(30,0);
                                             cout<<"2 - "<<i2+1<<endl;
                                             cout<<"3 - "<<i3+1<<endl;
                                             cout<<"4 - "<<i4+1<<endl;
@@ -59,7 +58,7 @@ void MainWindow::on_pushButton_clicked()
                                             cout<<"7 - "<<i7+1<<endl;
                                             cout<<"8 - "<<i8+1<<endl;
                                             obj->limpiar();
-                                            //   getch();
+                                           //getch();
                                         }
         }}}}}}}}//Se cierran los 8 ciclos for
         delete obj;
@@ -77,6 +76,8 @@ void MainWindow::paintEvent(QPaintEvent *event/*,int x, int y*/)
 {
     int x = 10;
     int y = 10;
+  //  if (this->y>60)
+    //    this->mover(0,-10);
     QPainter painter(this);
     if(!m_flag) {
         painter.setPen( Qt::green );
@@ -94,7 +95,41 @@ void MainWindow::paintEvent(QPaintEvent *event/*,int x, int y*/)
     }
 }
 
+void MainWindow::mover(int _x,int _y){
+    QPropertyAnimation *animation = new QPropertyAnimation(ui->label, "geometry");
+    animation->setDuration(100);
+    animation->setStartValue(QRect(this->x, 0, 100, this->y));
+    this->y +=_y;
+    this->x +=_x;
+    animation->setEndValue(QRect(x,0, 100, y));
+    animation->start();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    if (this->y>60)
+        this->mover(0,-10);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    if (this->x>-30)
+    this->mover(-10,0);
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    if (this->y<630)
+        this->mover(0,10);
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    if (this->x<580)
+        this->mover(10,0);
+}
+
 MainWindow::~MainWindow()
 {
-    //delete ui;
+    delete ui;
 }

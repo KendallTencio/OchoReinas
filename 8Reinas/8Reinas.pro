@@ -36,4 +36,5 @@ FORMS += \
         mainwindow.ui
 
 RESOURCES += \
-    res.qrc
+    res.qrc \
+    dama.qrc
