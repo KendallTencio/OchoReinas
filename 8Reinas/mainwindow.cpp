@@ -96,13 +96,21 @@ void MainWindow::paintEvent(QPaintEvent *event/*,int x, int y*/)
 }
 
 void MainWindow::mover(int _x,int _y){
-    QPropertyAnimation *animation = new QPropertyAnimation(ui->label, "geometry");
+    QPropertyAnimation *animation = new QPropertyAnimation(ui->dama1, "geometry");
+    QPropertyAnimation *animation2 = new QPropertyAnimation(ui->dama2, "geometry");
     animation->setDuration(100);
     animation->setStartValue(QRect(this->x, 0, 100, this->y));
     this->y +=_y;
     this->x +=_x;
     animation->setEndValue(QRect(x,0, 100, y));
     animation->start();
+    //--------------------------------------------
+    animation2->setDuration(100);
+    animation2->setStartValue(QRect(this->x, 0, 100, this->y));
+    this->y +=_y;
+    this->x +=_x;
+    animation2->setEndValue(QRect(x,0, 100, y));
+    animation2->start();
 }
 
 void MainWindow::on_pushButton_3_clicked()
