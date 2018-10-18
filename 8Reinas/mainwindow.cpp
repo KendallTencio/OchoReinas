@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "qpainter.h"
-#include "8reinas.h"
 #include <QPropertyAnimation>
 
 using namespace std;
@@ -11,10 +9,44 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    listaGrafica << ui->dama1;
+    listaGrafica << ui->dama2;
+    listaGrafica << ui->dama3;
+    listaGrafica << ui->dama4;
+    listaGrafica << ui->dama5;
+    listaGrafica << ui->dama6;
+    listaGrafica << ui->dama7;
+    listaGrafica << ui->dama8;
+    backTracking();
+    Reina* reina1 = new Reina(120,70);
+    listaReinas.append(reina1);
+
+
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::mover(){
+    for(int i =0 ; i<listaReinas.size();i++){
+        QPropertyAnimation *animation = new QPropertyAnimation(this->listaGrafica.at(1), "geometry");
+        animation->setDuration(1000);
+        animation->setStartValue(QRect(listaReinas.at(i)->getPuntoX(), 0, 100,listaReinas.at(i)->getPuntoY()));
+        listaReinas.at(i)->mover(8,8);
+        animation->setEndValue(QRect(listaReinas.at(i)->getPuntoX(), 0, 100, listaReinas.at(i)->getPuntoY()));
+        animation->start();
+    }
+
+}
+
+MainWindow::~MainWindow()
 {
+    delete ui;
+}
+
+void MainWindow::on_btnSiguiente_clicked()
+{
+    this->mover();
+}
+void MainWindow::backTracking(){
     m_flag = false;
     update();
    // QPaintEvent *evento();
@@ -43,101 +75,9 @@ void MainWindow::on_pushButton_clicked()
                                         }
                                         else
                                         {
-                                            //obj->dibujar();   Aquí se realizaba un dibujo de la matriz en la consola
-                                            soluciones++;
-                                            cout<<"Solucion "<<soluciones<<endl;
-                                            cout<<"Las coordenadas fueron: " <<endl;
-                                            cout<<"1 - "<<i1+1<<endl;
-                                            if (this->x<580)
-                                                this->mover(30,0);
-                                            cout<<"2 - "<<i2+1<<endl;
-                                            cout<<"3 - "<<i3+1<<endl;
-                                            cout<<"4 - "<<i4+1<<endl;
-                                            cout<<"5 - "<<i5+1<<endl;
-                                            cout<<"6 - "<<i6+1<<endl;
-                                            cout<<"7 - "<<i7+1<<endl;
-                                            cout<<"8 - "<<i8+1<<endl;
-                                            obj->limpiar();
-                                           //getch();
+                                           listaBack.append(obj);
                                         }
         }}}}}}}}//Se cierran los 8 ciclos for
-        delete obj;
 
-        //  getch();
-}
 
-void MainWindow::on_pushButton_2_clicked()
-{
-    m_flag = true;
-    update();
-}
-
-void MainWindow::paintEvent(QPaintEvent *event/*,int x, int y*/)
-{
-    int x = 10;
-    int y = 10;
-  //  if (this->y>60)
-    //    this->mover(0,-10);
-    QPainter painter(this);
-    if(!m_flag) {
-        painter.setPen( Qt::green );
-        painter.setBrush( Qt::green );
-        painter.drawRect(x, y, 50, 50);
-    }
-    else
-    {
-        painter.setPen( Qt::red );
-        painter.setBrush( Qt::red );
-        painter.drawRect(90, 10, 50, 50);
-        painter.setPen( Qt::blue );
-        painter.setBrush( Qt::blue );
-        painter.drawRect(10, 10, 50, 50);
-    }
-}
-
-void MainWindow::mover(int _x,int _y){
-    QPropertyAnimation *animation = new QPropertyAnimation(ui->dama1, "geometry");
-    QPropertyAnimation *animation2 = new QPropertyAnimation(ui->dama2, "geometry");
-    animation->setDuration(100);
-    animation->setStartValue(QRect(this->x, 0, 100, this->y));
-    this->y +=_y;
-    this->x +=_x;
-    animation->setEndValue(QRect(x,0, 100, y));
-    animation->start();
-    //--------------------------------------------
-    animation2->setDuration(100);
-    animation2->setStartValue(QRect(this->x, 0, 100, this->y));
-    this->y +=_y;
-    this->x +=_x;
-    animation2->setEndValue(QRect(x,0, 100, y));
-    animation2->start();
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    if (this->y>60)
-        this->mover(0,-10);
-}
-
-void MainWindow::on_pushButton_4_clicked()
-{
-    if (this->x>-30)
-    this->mover(-10,0);
-}
-
-void MainWindow::on_pushButton_6_clicked()
-{
-    if (this->y<630)
-        this->mover(0,10);
-}
-
-void MainWindow::on_pushButton_5_clicked()
-{
-    if (this->x<580)
-        this->mover(10,0);
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }

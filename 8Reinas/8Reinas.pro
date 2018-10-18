@@ -26,15 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     8Reinas.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    reina.cpp
 
 HEADERS += \
     8reinas.h \
-    mainwindow.h
+    mainwindow.h \
+    reina.h
 
 FORMS += \
         mainwindow.ui
 
 RESOURCES += \
-    res.qrc \
     dama.qrc

@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "reina.h"
+#include <QLabel>
+#include "8reinas.h"
 namespace Ui {
 class MainWindow;
 }
@@ -16,26 +18,18 @@ public:
    ~MainWindow();
 
 private slots:
-   void on_pushButton_clicked();
 
-   void on_pushButton_2_clicked();
-
-   void paintEvent(QPaintEvent *event/*,int x, int y*/);
-
-   void on_pushButton_3_clicked();
-
-   void on_pushButton_4_clicked();
-
-   void on_pushButton_6_clicked();
-
-   void on_pushButton_5_clicked();
+   void on_btnSiguiente_clicked();
 
 private:
-    int x=-20;
-    int y=60;
+    QList<QLabel *> listaGrafica;
+    QList<Reina *> listaReinas;
+    QList<ajedrez*> listaBack;
     Ui::MainWindow *ui;
     bool m_flag = false;
-    void mover(int,int);
+    void mover();
+    void backTracking();
+
 };
 
 
