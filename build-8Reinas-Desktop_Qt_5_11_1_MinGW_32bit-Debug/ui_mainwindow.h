@@ -35,6 +35,7 @@ public:
     QLabel *dama8;
     QPushButton *btnSiguiente;
     QLabel *label;
+    QPushButton *btnAnterior;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -97,13 +98,16 @@ public:
         dama8->setScaledContents(false);
         btnSiguiente = new QPushButton(centralWidget);
         btnSiguiente->setObjectName(QStringLiteral("btnSiguiente"));
-        btnSiguiente->setGeometry(QRect(310, 600, 75, 23));
+        btnSiguiente->setGeometry(QRect(350, 600, 75, 23));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(660, 30, 47, 13));
+        label->setGeometry(QRect(240, 630, 201, 21));
         QFont font;
         font.setPointSize(14);
         label->setFont(font);
+        btnAnterior = new QPushButton(centralWidget);
+        btnAnterior->setObjectName(QStringLiteral("btnAnterior"));
+        btnAnterior->setGeometry(QRect(270, 600, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -131,6 +135,7 @@ public:
         dama8->setText(QString());
         btnSiguiente->setText(QApplication::translate("MainWindow", "Siguiente", nullptr));
         label->setText(QString());
+        btnAnterior->setText(QApplication::translate("MainWindow", "Anterior", nullptr));
     } // retranslateUi
 
 };

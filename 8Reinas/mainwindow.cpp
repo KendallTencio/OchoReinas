@@ -36,8 +36,7 @@ MainWindow::MainWindow(QWidget *parent):
     listaReinas.append(reina7);
     listaReinas.append(reina8);
     cont=0;
-
-
+    this->ui->btnAnterior->setEnabled(false);
 }
 
 void MainWindow::mover(int posSolucion)
@@ -58,19 +57,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btnSiguiente_clicked()
-{
-    if (cont<92){
-        this->mover(this->cont);
-        cont++;
-        this->ui->label->setText(QString::number(cont));
-    }else{
-         QMessageBox msgBox;
-         msgBox.setText("Se acabaron las opciones");
-         msgBox.exec();
-    }
-
-}
 void MainWindow::backTracking(){
     m_flag = false;
     update();
@@ -127,4 +113,26 @@ void MainWindow::backTracking(){
                                 }}}}}}}}//Se cierran los 8 ciclos for
 
 
+}
+
+void MainWindow::on_btnSiguiente_clicked()
+{
+   this->ui->btnAnterior->setEnabled(true);
+   this->mover(this->cont);
+   cont++;
+   this->ui->label->setText("Solucion: "+QString::number(cont));
+   if(cont==92)
+        ui->btnSiguiente->setEnabled(false);
+
+}
+
+void MainWindow::on_btnAnterior_clicked()
+{
+    this->ui->btnSiguiente->setEnabled(true);
+
+    this->mover(this->cont);
+    cont--;
+    this->ui->label->setText("Solucion: "+QString::number(cont));
+    if(cont==0)
+        ui->btnAnterior->setEnabled(false);
 }

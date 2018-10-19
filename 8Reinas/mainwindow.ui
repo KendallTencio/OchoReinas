@@ -203,7 +203,7 @@
    <widget class="QPushButton" name="btnSiguiente">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>350</x>
       <y>600</y>
       <width>75</width>
       <height>23</height>
@@ -216,10 +216,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>30</y>
-      <width>47</width>
-      <height>13</height>
+      <x>240</x>
+      <y>630</y>
+      <width>201</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -229,6 +229,19 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAnterior">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>600</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Anterior</string>
     </property>
    </widget>
   </widget>

@@ -23,6 +23,8 @@ private slots:
 
    void on_btnSiguiente_clicked();
 
+   void on_btnAnterior_clicked();
+
 private:
     QList<Solucion> listablack;
     QList<QLabel *> listaGrafica;
