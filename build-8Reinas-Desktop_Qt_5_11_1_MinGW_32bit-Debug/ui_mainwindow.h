@@ -34,6 +34,7 @@ public:
     QLabel *dama7;
     QLabel *dama8;
     QPushButton *btnSiguiente;
+    QLabel *label;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -41,7 +42,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(780, 725);
+        MainWindow->resize(703, 679);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         ImagenTablero = new QLabel(centralWidget);
@@ -97,10 +98,16 @@ public:
         btnSiguiente = new QPushButton(centralWidget);
         btnSiguiente->setObjectName(QStringLiteral("btnSiguiente"));
         btnSiguiente->setGeometry(QRect(310, 600, 75, 23));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(660, 30, 47, 13));
+        QFont font;
+        font.setPointSize(14);
+        label->setFont(font);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 780, 21));
+        menuBar->setGeometry(QRect(0, 0, 703, 21));
         MainWindow->setMenuBar(menuBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -123,6 +130,7 @@ public:
         dama7->setText(QString());
         dama8->setText(QString());
         btnSiguiente->setText(QApplication::translate("MainWindow", "Siguiente", nullptr));
+        label->setText(QString());
     } // retranslateUi
 
 };

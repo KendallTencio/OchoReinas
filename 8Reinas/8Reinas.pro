@@ -27,12 +27,14 @@ SOURCES += \
     8Reinas.cpp \
     main.cpp \
     mainwindow.cpp \
-    reina.cpp
+    reina.cpp \
+    soluciones.cpp
 
 HEADERS += \
     8reinas.h \
     mainwindow.h \
-    reina.h
+    reina.h \
+    soluciones.h
 
 FORMS += \
         mainwindow.ui

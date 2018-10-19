@@ -12,8 +12,8 @@ Reina::Reina(int _x,int _y)
 
 void Reina::mover(int _puntoX,int _puntoY)
 {
-    this->puntoX = 63+63*_puntoX;
-    this->puntoY = 119+119*_puntoY;
+    this->puntoX = 69+69*_puntoX;
+    this->puntoY = 135+135*_puntoY;
 
 }
 

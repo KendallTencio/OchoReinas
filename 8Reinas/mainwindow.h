@@ -4,7 +4,9 @@
 #include <QMainWindow>
 #include "reina.h"
 #include <QLabel>
+#include "soluciones.h"
 #include "8reinas.h"
+#include "qmessagebox.h"
 namespace Ui {
 class MainWindow;
 }
@@ -22,13 +24,15 @@ private slots:
    void on_btnSiguiente_clicked();
 
 private:
+    QList<Solucion> listablack;
     QList<QLabel *> listaGrafica;
     QList<Reina *> listaReinas;
-    QList<ajedrez*> listaBack;
     Ui::MainWindow *ui;
     bool m_flag = false;
-    void mover();
+    void mover(int posSolicion);
     void backTracking();
+    int cont;
+
 
 };
 
