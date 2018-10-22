@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Ocho Reinas</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="dama.qrc">
+    <normaloff>:/Tablero.jpg</normaloff>:/Tablero.jpg</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="ImagenTablero">
     <property name="geometry">
@@ -251,7 +255,7 @@
      <x>0</x>
      <y>0</y>
      <width>703</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
