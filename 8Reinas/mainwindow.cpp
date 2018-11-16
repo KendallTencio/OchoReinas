@@ -58,8 +58,6 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::backTracking(){
-    m_flag = false;
-    update();
     ajedrez *obj = new ajedrez();
     for(int i1=0;i1<8;i1++){ //Estos 8 ciclos for me generaran las 92 posibles
         for(int i2=0;i2<8;i2++){ //combinaciones, se buscaran todas las posibles
@@ -84,30 +82,17 @@ void MainWindow::backTracking(){
                                         obj->error=0;
                                     }
                                     else
-                                    {
-                                         Solucion solucion;
-                                        //obj->dibujar();   Aquí se realizaba un dibujo de la matriz en la consola
-
-                                            //cout<<"Las coordenadas fueron: " <<endl;
-                                            //cout<<"1 - "<<i1+1<<endl;
+                                    {      Solucion solucion;
                                             solucion.setPuntos(0,i1,0);
-                                            //cout<<"2 - "<<i2+1<<endl;
                                             solucion.setPuntos(1,i2,1);
-                                            //cout<<"3 - "<<i3+1<<endl;
                                             solucion.setPuntos(2,i3,2);
-                                            //cout<<"4 - "<<i4+1<<endl;
                                             solucion.setPuntos(3,i4,3);
-                                            //cout<<"5 - "<<i5+1<<endl;
                                             solucion.setPuntos(4,i5,4);
-                                            //cout<<"6 - "<<i6+1<<endl;
-                                            solucion.setPuntos(5,i6,5);
-                                            //cout<<"7 - "<<i7+1<<endl;
-                                             solucion.setPuntos(6,i7,6);
-                                            //cout<<"8 - "<<i8+1<<endl;
-                                             solucion.setPuntos(7,i8,7);
+                                            solucion.setPuntos(5,i6,5);                                         
+                                            solucion.setPuntos(6,i7,6);
+                                            solucion.setPuntos(7,i8,7);
                                          obj->limpiar();
                                        listablack.append(solucion);
-                                        //getch();
 
                                     }
                                 }}}}}}}}//Se cierran los 8 ciclos for

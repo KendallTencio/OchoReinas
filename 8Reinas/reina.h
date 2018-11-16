@@ -6,7 +6,7 @@ class Reina
 {
 
 public:
-    Reina(int,int);
+    Reina(int x,int y);
     void mover(int _puntoX,int _puntoY);
     int getPuntoX();
     int getPuntoY();
@@ -14,7 +14,6 @@ public:
 private:
     int puntoX;
     int puntoY;
-
 };
 
 
